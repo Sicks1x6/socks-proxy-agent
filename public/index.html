@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOCKS Proxy Agent - Web Interface</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔒 SOCKS Proxy Agent</h1>
+            <p>Web interface for testing proxy connections</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <h2>Proxy Configuration</h2>
+                <form id="proxyForm">
+                    <div class="form-group">
+                        <label for="proxyType">Proxy Type:</label>
+                        <select id="proxyType" name="proxyType" required>
+                            <option value="socks5">SOCKS5</option>
+                            <option value="socks4">SOCKS4</option>
+                            <option value="http">HTTP</option>
+                            <option value="https">HTTPS</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="proxyUrl">Proxy URL:</label>
+                        <input 
+                            type="text" 
+                            id="proxyUrl" 
+                            name="proxyUrl" 
+                            placeholder="socks5://127.0.0.1:1080" 
+                            required
+                        >
+                        <small>Format: protocol://host:port or protocol://user:pass@host:port</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="targetUrl">Target URL:</label>
+                        <input 
+                            type="text" 
+                            id="targetUrl" 
+                            name="targetUrl" 
+                            placeholder="https://api.ipify.org?format=json" 
+                            required
+                        >
+                        <small>The URL you want to access through the proxy</small>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-primary">Test Connection</button>
+                        <button type="button" class="btn btn-secondary" onclick="makeRequest()">Make Request</button>
+                        <button type="reset" class="btn btn-secondary">Clear</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card">
+                <h2>Response</h2>
+                <div id="loading" class="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Testing proxy connection...</p>
+                </div>
+                <div id="result" class="result"></div>
+            </div>
+
+            <div class="card info-card">
+                <h2>ℹ️ Information</h2>
+                <div class="info-content">
+                    <h3>Supported Protocols:</h3>
+                    <ul>
+                        <li><strong>SOCKS5:</strong> Full-featured proxy with authentication support</li>
+                        <li><strong>SOCKS4:</strong> Legacy SOCKS protocol</li>
+                        <li><strong>HTTP:</strong> Standard HTTP proxy</li>
+                        <li><strong>HTTPS:</strong> Secure HTTP proxy with TLS</li>
+                    </ul>
+                    
+                    <h3>Example Proxy URLs:</h3>
+                    <ul>
+                        <li><code>socks5://127.0.0.1:1080</code></li>
+                        <li><code>socks5://user:pass@proxy.example.com:1080</code></li>
+                        <li><code>socks4://127.0.0.1:1080</code></li>
+                        <li><code>http://proxy.example.com:8080</code></li>
+                        <li><code>https://proxy.example.com:8443</code></li>
+                    </ul>
+
+                    <h3>Test URLs:</h3>
+                    <ul>
+                        <li><code>https://api.ipify.org?format=json</code> - Check your IP</li>
+                        <li><code>http://httpbin.org/get</code> - HTTP test endpoint</li>
+                        <li><code>https://httpbin.org/get</code> - HTTPS test endpoint</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>SOCKS Proxy Agent © 2025 | Supports SOCKS5, SOCKS4, HTTP, HTTPS protocols</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
