@@ -42,19 +42,19 @@ async function testProxy(proxyType, proxyUrl, targetUrl) {
                     <div class="result-title">✅ Connection Successful!</div>
                     <div class="result-details">
                         <div class="result-item">
-                            <strong>Status:</strong> ${data.statusCode} ${data.statusMessage}
+                            <strong>Status:</strong> ${escapeHtml(String(data.statusCode))} ${escapeHtml(String(data.statusMessage))}
                         </div>
                         <div class="result-item">
-                            <strong>Response Time:</strong> ${data.responseTime}ms
+                            <strong>Response Time:</strong> ${escapeHtml(String(data.responseTime))}ms
                         </div>
                         <div class="result-item">
-                            <strong>Content Length:</strong> ${data.bodyLength} bytes
+                            <strong>Content Length:</strong> ${escapeHtml(String(data.bodyLength))} bytes
                         </div>
                         <div class="result-item">
-                            <strong>Proxy Type:</strong> ${proxyType.toUpperCase()}
+                            <strong>Proxy Type:</strong> ${escapeHtml(proxyType.toUpperCase())}
                         </div>
                         <div class="result-item">
-                            <strong>Message:</strong> ${data.message}
+                            <strong>Message:</strong> ${escapeHtml(String(data.message))}
                         </div>
                     </div>
                 </div>
@@ -65,11 +65,11 @@ async function testProxy(proxyType, proxyUrl, targetUrl) {
                     <div class="result-title">❌ Connection Failed</div>
                     <div class="result-details">
                         <div class="result-item">
-                            <strong>Error:</strong> ${data.error}
+                            <strong>Error:</strong> ${escapeHtml(String(data.error))}
                         </div>
                         ${data.details ? `
                         <div class="result-item">
-                            <strong>Details:</strong> ${data.details}
+                            <strong>Details:</strong> ${escapeHtml(String(data.details))}
                         </div>
                         ` : ''}
                     </div>
@@ -85,7 +85,7 @@ async function testProxy(proxyType, proxyUrl, targetUrl) {
                 <div class="result-title">❌ Request Failed</div>
                 <div class="result-details">
                     <div class="result-item">
-                        <strong>Error:</strong> ${error.message}
+                        <strong>Error:</strong> ${escapeHtml(String(error.message))}
                     </div>
                     <div class="result-item">
                         <strong>Details:</strong> Failed to communicate with the server
@@ -138,16 +138,16 @@ async function makeRequest() {
                     <div class="result-title">✅ Request Successful!</div>
                     <div class="result-details">
                         <div class="result-item">
-                            <strong>Status:</strong> ${data.statusCode} ${data.statusMessage}
+                            <strong>Status:</strong> ${escapeHtml(String(data.statusCode))} ${escapeHtml(String(data.statusMessage))}
                         </div>
                         <div class="result-item">
-                            <strong>Response Time:</strong> ${data.responseTime}ms
+                            <strong>Response Time:</strong> ${escapeHtml(String(data.responseTime))}ms
                         </div>
                         <div class="result-item">
-                            <strong>Content Length:</strong> ${data.bodyLength} bytes
+                            <strong>Content Length:</strong> ${escapeHtml(String(data.bodyLength))} bytes
                         </div>
                         <div class="result-item">
-                            <strong>Proxy Type:</strong> ${proxyType.toUpperCase()}
+                            <strong>Proxy Type:</strong> ${escapeHtml(proxyType.toUpperCase())}
                         </div>
                         <div class="result-item">
                             <strong>Response Preview:</strong>
@@ -162,11 +162,11 @@ async function makeRequest() {
                     <div class="result-title">❌ Request Failed</div>
                     <div class="result-details">
                         <div class="result-item">
-                            <strong>Error:</strong> ${data.error}
+                            <strong>Error:</strong> ${escapeHtml(String(data.error))}
                         </div>
                         ${data.details ? `
                         <div class="result-item">
-                            <strong>Details:</strong> ${data.details}
+                            <strong>Details:</strong> ${escapeHtml(String(data.details))}
                         </div>
                         ` : ''}
                     </div>
@@ -182,7 +182,7 @@ async function makeRequest() {
                 <div class="result-title">❌ Request Failed</div>
                 <div class="result-details">
                     <div class="result-item">
-                        <strong>Error:</strong> ${error.message}
+                        <strong>Error:</strong> ${escapeHtml(String(error.message))}
                     </div>
                     <div class="result-item">
                         <strong>Details:</strong> Failed to communicate with the server
