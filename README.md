@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 socks-proxy-agent
 ================
 ### A SOCKS proxy `http.Agent` implementation for HTTP and HTTPS
@@ -48,3 +49,7 @@ socket.on('message', function (data, flags) {
 	socket.close();
 });
 ```
+=======
+# socks-proxy-agent
+supports socks5, socks4, https, http protocols 
+>>>>>>> origin/main
